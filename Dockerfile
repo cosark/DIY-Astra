@@ -4,6 +4,11 @@ FROM python:3.12
 # Set the working directory in the container
 WORKDIR /usr/src/app
 
+# Install system dependencies for OpenCV
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+ && rm -rf /var/lib/apt/lists/*
+
 # Copy the current directory contents into the container at /usr/src/app
 COPY . .
 
